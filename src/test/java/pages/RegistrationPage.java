@@ -63,9 +63,10 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setSubject(String value) {
+    public RegistrationPage setSubject() {
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#subjectsInput").setValue("Chemistry").pressEnter();
+        $("[for=hobbies-checkbox-2]").click();
 
         return this;
     }

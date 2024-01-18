@@ -24,13 +24,10 @@ public class FirstUnitTestWithPages extends TestBase {
                 .setLastName(lastname)
                 .setEmail(email)
                 .setNumber(number)
+                .setSubject()
                 .setAddress(address)
                 .setDateBirth("16", "3", "1996")
                 .setGender("Male");
-
-        $("#subjectsInput").setValue("Math").pressEnter();
-        $("#subjectsInput").setValue("Chemistry").pressEnter();
-        $("[for=hobbies-checkbox-2]").click();
 
         $("#uploadPicture").uploadFile(new File("src/test/resources/img/image.png"));
 
