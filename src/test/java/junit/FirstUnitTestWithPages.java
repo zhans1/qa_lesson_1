@@ -32,7 +32,7 @@ public class FirstUnitTestWithPages extends TestBase {
         $("#subjectsInput").setValue("Chemistry").pressEnter();
         $("[for=hobbies-checkbox-2]").click();
 
-        $("#uploadPicture").uploadFile(new File("src/test/resources/image.png"));
+        $("#uploadPicture").uploadFile(new File("src/test/resources/img/image.png"));
 
         //$("#stateCity-wrapper").findElement(byText("Select State")).click();
         $("#state").click();
