@@ -28,7 +28,7 @@ public class FirstUnitTest extends TestBaseWithBrowser {
 
 
         step("Open main page", () -> {
-            open("/automation-practice-form");
+            open("https://demoqa.com/automation-practice-form");
         });
 
         step("Set user information", () -> {
