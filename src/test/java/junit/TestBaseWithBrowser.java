@@ -16,6 +16,7 @@ public class TestBaseWithBrowser {
 
     @BeforeAll
     static void beforeAll() {
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
         Configuration.browser = "chrome";
         Configuration.browserVersion = "100.0";
@@ -29,8 +30,10 @@ public class TestBaseWithBrowser {
         ));
 
         Configuration.browserCapabilities = capabilities;
+    }
 
-        executeJavaScript("$('#adplus-anchor').remove()");
-        executeJavaScript("$('footer').remove()");
+    @BeforeEach
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 }
