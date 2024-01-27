@@ -21,8 +21,7 @@ public class TestBaseWithBrowser {
         Configuration.browserVersion = "100.0";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        executeJavaScript("$('#adplus-anchor').remove()");
-        executeJavaScript("$('footer').remove()");
+
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -31,5 +30,8 @@ public class TestBaseWithBrowser {
         ));
 
         Configuration.browserCapabilities = capabilities;
+
+        executeJavaScript("$('#adplus-anchor').remove()");
+        executeJavaScript("$('footer').remove()");
     }
 }
