@@ -10,6 +10,8 @@ import pages.RegistrationPage;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.executeJavaScript;
+
 public class TestBaseWithBrowser {
 
     @BeforeAll
@@ -19,6 +21,8 @@ public class TestBaseWithBrowser {
         Configuration.browserVersion = "100.0";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        executeJavaScript("$('#adplus-anchor').remove()");
+        executeJavaScript("$('footer').remove()");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
