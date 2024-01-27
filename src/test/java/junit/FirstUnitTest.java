@@ -1,28 +1,26 @@
 package junit;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.util.Locale;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 
-public class FirstUnitTest {
-    String firstname = "Egor";
-    String lastname = "Makarov";
-    String email = "example@gmail.com";
-    String number = "1234567890";
-    String address = "Current Address 1";
+@Tag("remote")
+public class FirstUnitTest extends TestBaseWithBrowser {
 
-    @BeforeAll
-    static void beforeAll(){
-        Configuration.holdBrowserOpen = true;
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-    }
+    Faker faker = new Faker(new Locale("de"));
+
+    String firstname = faker.name().firstName();
+    String lastname = faker.name().lastName();
+    String email = faker.internet().emailAddress();
+    String number = faker.number().digits(10);
+    String address = faker.address().secondaryAddress();
 
     @Test
     void fillFormTest() {
@@ -42,7 +40,7 @@ public class FirstUnitTest {
         $("#subjectsInput").setValue("Chemistry").pressEnter();
         $("[for=hobbies-checkbox-2]").click();
 
-        $("#uploadPicture").uploadFile(new File ("src/test/resources/image.png"));
+        $("#uploadPicture").uploadFile(new File ("src/test/resources/img/image.png"));
 
         $("#currentAddress").setValue(address);
 
