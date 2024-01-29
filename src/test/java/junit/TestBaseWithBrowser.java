@@ -28,4 +28,9 @@ public class TestBaseWithBrowser {
 
         Configuration.browserCapabilities = capabilities;
     }
+
+    @BeforeEach
+    void setBeforeEach() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
 }
