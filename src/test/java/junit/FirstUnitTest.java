@@ -25,18 +25,6 @@ public class FirstUnitTest extends TestBaseWithBrowser {
 
     @Test
     void fillFormTest() {
-<<<<<<< HEAD
-
-        step("Open form" () -)
-        open("/automation-practice-form");
-        $("#firstName").setValue(firstname);
-        $("#lastName").setValue(lastname);
-        $("#userEmail").setValue(email);
-        $(byText("Male")).click();
-        $("#userNumber").setValue(number);
-=======
->>>>>>> 14220904a0743293810609462af96026f850f3de
-
 
         step("Open main page", () -> {
             open("/automation-practice-form");

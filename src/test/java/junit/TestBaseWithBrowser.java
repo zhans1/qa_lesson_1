@@ -8,21 +8,18 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import pages.RegistrationPage;
 
 import java.util.Map;
-
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class TestBaseWithBrowser {
 
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.browser = "chrome";
-        Configuration.browserVersion = "100.0";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.browserSize = System.getProperty("size");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("version");
+        Configuration.remote = "https://user1:1234@" + System.getProperty("selenoidUrl") + "/wd/hub";
 
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -35,10 +32,6 @@ public class TestBaseWithBrowser {
     }
 
     @BeforeEach
-<<<<<<< HEAD
-    void setBeforeEach() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-=======
     void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
@@ -49,6 +42,5 @@ public class TestBaseWithBrowser {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
->>>>>>> 14220904a0743293810609462af96026f850f3de
     }
 }
